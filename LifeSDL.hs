@@ -4,7 +4,6 @@ import Graphics.UI.SDL as SDL
 import Data.List (nub)
 
 -- global config options
-
 cellsize = 4
 height   = 480
 width    = 640
@@ -59,16 +58,11 @@ userSeed screen seed pos@(x, y) = do
     case event of
          KeyDown (Keysym key _ _) -> do
              case key of
-                  SDLK_UP       -> do
-                      updateCursor (x, y - 1)
-                  SDLK_DOWN     -> do
-                      updateCursor (x, y + 1)
-                  SDLK_LEFT     -> do
-                      updateCursor (x - 1, y)
-                  SDLK_RIGHT    -> do
-                      updateCursor (x + 1, y)
+                  SDLK_UP       -> updateCursor (x, y - 1)
+                  SDLK_DOWN     -> updateCursor (x, y + 1)
+                  SDLK_LEFT     -> updateCursor (x - 1, y)
+                  SDLK_RIGHT    -> updateCursor (x + 1, y)
                   SDLK_RETURN   -> do
-                      drawBoard screen seed
                       addCell screen pos
                       SDL.flip screen
                       userSeed screen (pos : seed) pos

@@ -31,8 +31,8 @@ neighbours (x, y) = [(x + dx, y + dy) | dx <- [-1..1], dy <- [-1..1], dx /= 0 ||
 wrapCell :: Edge -> Cell -> Cell
 wrapCell (w, h) (x, y) = (wrap x w, wrap y h)
     where wrap a b
-            | a < 0     = b + a
-            | a > b     = a - b
+            | a < 0     = wrap (b + a) b
+            | a > b     = wrap (a - b) b
             | otherwise = a
 
 -- apply wrapCell to every Cell in a Board
