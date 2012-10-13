@@ -112,6 +112,7 @@ main = withInit [InitEverything] $ do
                     Nothing -> []
                     Just xs -> xs
     drawBoard screen load'
+    putStrLn "Use arrow keys to move cursor, enter to add a cell.\nPress 'b' to begin the game."
     seed    <- userSeed screen load' centre
     putStrLn "Press 'q' to quit.\nPress 's' to save."
     gen edges screen seed
